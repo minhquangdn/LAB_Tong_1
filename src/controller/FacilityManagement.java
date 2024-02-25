@@ -1,5 +1,7 @@
 package controller;
 
+import java.text.ParseException;
+
 import service.FacilityService;
 import view.Menu;
 
@@ -24,7 +26,7 @@ public class FacilityManagement extends Menu {
     }
 
     @Override
-    public void execute(int n) {
+    public void execute(int n) throws ParseException {
         switch (n){
             case 1 ->{ //"Display list facility"
                 facilityService.displayFacility();
@@ -40,6 +42,7 @@ public class FacilityManagement extends Menu {
             
             case 4 ->{ // "Return main menu"
                 System.out.println("Return main menu..");
+                parentMenu.run(); // Gọi phương thức run() của menu cha (FuramaController)
                 return;
             }
         }
