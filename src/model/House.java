@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author DELL
+ * @author Quang
  */
 public class House extends Facility{
     

@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package view;
 
-import controller.FacilityManagement;
 import controller.FuramaController;
 
 /**
@@ -27,7 +22,6 @@ public class Test {
                           "Promotion Management",
                           "Exit"};
         FuramaController furamaController = new FuramaController("---------- MENU ----------",mchon);
-        furamaController.setParentMenu(furamaController.parentMenu);
         furamaController.run();
     }
 }

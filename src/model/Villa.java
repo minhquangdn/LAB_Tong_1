@@ -6,14 +6,12 @@ package model;
 
 /**
  *
- * @author DELL
+ * @author Quang
  */
 public class Villa extends Facility {
     private String roomType;
     private String poolSquare;
     private String floor;
-
-    
 
     public Villa(String id, String name, int square, long price, int numOfPer, String type, String roomType, String poolSquare, String floor) {
         super(id, name, square, price, numOfPer, type);

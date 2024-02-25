@@ -2,7 +2,7 @@ package model;
 
 /**
  *
- * @author DELL
+ * @author Quang
  */
 public class Room extends Facility{
     

@@ -27,6 +27,15 @@ public class FacilityService {
         FacilityService.listFacility = listFacility;
     }
 
+    public Facility searchFacility(String id){
+        for (Facility f : listFacility){
+            if (f.getId().equals(id))
+                return f;
+        }
+        return null;
+    }
+    
+
     
     public void displayFacility(){
             
@@ -96,6 +105,7 @@ public class FacilityService {
 
         }
     }
+
     
     
     public void addNewFacility(){
