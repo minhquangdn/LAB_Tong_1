@@ -6,14 +6,16 @@ package model;
 
 /**
  *
- * @author mb
+ * @author DELL
  */
 public class Villa extends Facility {
     private String roomType;
     private String poolSquare;
     private String floor;
 
-    public Villa(String roomType, String poolSquare, String floor, String id, String name, int square, long price, int numOfPer, String type) {
+    
+
+    public Villa(String id, String name, int square, long price, int numOfPer, String type, String roomType, String poolSquare, String floor) {
         super(id, name, square, price, numOfPer, type);
         this.roomType = roomType;
         this.poolSquare = poolSquare;
@@ -43,6 +45,13 @@ public class Villa extends Facility {
     public void setFloor(String floor) {
         this.floor = floor;
     }
-    
+
+    @Override
+    public String toString() {
+        return (String.format("| %-12s | %-12s | %-12s | %-12s | %-20s | %-12s | %-12s | %-12s | %-12s |", getId(),getName(),getSquare()+"m2",getPrice()+"$",getNumOfPer(),getType(),getRoomType(),getPoolSquare()+"m2",getFloor()));
+    }
+
+
     
 }
+
