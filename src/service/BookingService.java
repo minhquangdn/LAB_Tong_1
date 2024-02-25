@@ -2,6 +2,8 @@ package service;
 
 import model.Facility;
 import model.Room;
+import model.Villa;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -23,17 +25,24 @@ public class BookingService {
     Queue<Booking> bookingBill = new LinkedList<>();
     ArrayList<Constract> listConstract = new ArrayList<>();
     Map<Facility, Integer> bill = new HashMap<>();
-    Map<Booking, Integer> oorder = new HashMap<>();  //luu cac phong tromg 1 don
+    Map<Booking, Integer> oorder = new HashMap<>();  //luu cac phong trong 1 don
     Scanner in = new Scanner(System.in);
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
+    CustomerService customerService = new CustomerService();
     FacilityService fc = new FacilityService();
 
     public BookingService() {
+       
     }
 
+    public BookingService(CustomerService customerService, FacilityService fc){
+        
+    }
+
+
     public void readInf() throws ParseException {
-        Facility r = fc.searchFacility("RO001");
+        Facility r = new Villa("SVVL-0001","Villa 1",600, 2000, 10, "Villa", "luxury", "80", "4");
         System.out.println(r);
         bill.put(r, 2);
         listBooking.add(new Booking("0001", checkdate("20/2/2024"), checkdate("21/2/2024"), checkdate("25/2/2024"), "KH0001", bill));
@@ -72,7 +81,10 @@ public class BookingService {
                 System.out.println("Please input checkout date after checkin");
             }
         } while (checkoutDate.before(checkinDate));
-        //------display customer id ......
+
+        //------display customer id ...... code phuc
+        customerService.displayList();
+
         System.out.println("Input customer Id: ");
         customerId = in.nextLine();
         do {
@@ -101,7 +113,7 @@ public class BookingService {
     }
 //------------------------------------------------------------------------------ 
 
-    public int caculateTotal(String bookingId) {
+    int caculateTotal(String bookingId) {
         int total = 0;
         Booking b = searchBooking(bookingId);
         Map<Facility, Integer> bill = b.getBill();
@@ -115,7 +127,9 @@ public class BookingService {
     }
 
 //------------------------------------------------------------------------------   
-    public void displayListBooking() {
+    public void displayListBooking() throws ParseException  {
+        readInf();
+        
         System.out.println("Booking List: ");
         System.out.println("+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+");
         System.out.printf("| %-15s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s |\n", "Booking ID", "Booking Date", "Check-in Date", "Check-out Date", "Customer ID", "Service ID", "Quantity");

@@ -8,6 +8,6 @@ package service;
  *
  * @author DELL
  */
-public interface ContactService {
+public class ContactService {
     
 }

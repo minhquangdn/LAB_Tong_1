@@ -282,7 +282,7 @@ public class Validation {
                     validAge = true;
                     System.out.println("Enter successfully!");
                 } else {
-                    System.out.println("Only enter the birthday that enough 18 age!, please re-enter..");
+                    System.out.println("Only enter the birthday that enough 18 age, please re-enter..");
                 }
             } catch (ParseException e) {
                 System.out.println("Birthday is not valid, please re-enter..");

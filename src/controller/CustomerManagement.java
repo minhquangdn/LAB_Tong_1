@@ -4,6 +4,7 @@
  */
 package controller;
 
+import service.CustomerService;
 import view.Menu;
 
 /**
@@ -11,6 +12,8 @@ import view.Menu;
  * @author DELL
  */
 public class CustomerManagement extends Menu {
+
+    CustomerService customerService = new CustomerService();
 
     public CustomerManagement() {
     }
@@ -22,20 +25,20 @@ public class CustomerManagement extends Menu {
     @Override
     public void execute(int n) {
         switch (n){
-            case 1 ->{
-                
+            case 1 ->{ //"Display list customers"
+                customerService.displayList();
             }
             
-            case 2 ->{
-                
+            case 2 ->{ //"Add new customer"
+                customerService.addCus();
             }
             
-            case 3 ->{
-                
+            case 3 ->{ // "Edit customer"
+                customerService.editCus();
             }
             
-            case 4 ->{
-                
+            case 4 ->{ // "Return main menu"
+                System.out.println("Return main menu..");
             }
         }
     }

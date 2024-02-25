@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
+import service.EmployeeService;
 import view.Menu;
 
 /**
@@ -11,6 +9,8 @@ import view.Menu;
  * @author DELL
  */
 public class EmployeeManagement extends Menu {
+
+    EmployeeService employeeService = new EmployeeService();
 
     public EmployeeManagement() {
     }
@@ -22,20 +22,24 @@ public class EmployeeManagement extends Menu {
     @Override
     public void execute(int n) {
         switch (n){
-            case 1 ->{
-                
+            case 1 ->{ //"Display list employees"
+                employeeService.displayList();
+  
             }
             
-            case 2 ->{
-                
+            case 2 ->{ //"Add new employee"
+                employeeService.addEmp();
+
             }
             
-            case 3 ->{
-                
+            case 3 ->{ // "Edit employee"
+                employeeService.editEmp();
+   
             }
             
-            case 4 ->{
-                
+            case 4 ->{ // "Return main menu"
+                System.out.println("Return main menu..");
+             
             }
         }
     }

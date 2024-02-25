@@ -44,7 +44,7 @@ public class EmployeeService  {
         System.out.println("\nAdd new Employee");
         
             do{
-                codeId = Validation.getEmpIDFromInput("ID");
+                codeId = Validation.getEmpIDFromInput("ID <NV-YYYY> (Y is number)");
                 //check empId validate
         
                 if(checkExistID(codeId, listEmp)){
@@ -89,7 +89,7 @@ public class EmployeeService  {
         System.out.println("                          \t~~~~~~~~~~~~~~~~~~~~~~~~ EDIT Employee~~~~~~~~~~~~~~~~~~~~~~~~");
         do{
 
-            perId = Validation.getEmpIDFromInput("ID");
+            perId = Validation.getEmpIDFromInput("ID <NV-YYYY> (Y is number)");
             if (checkExistID(perId, listEmp)) {
                 System.out.println("~~~~~~~~~What type do you want to change?");
                 System.out.println(

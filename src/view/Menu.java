@@ -1,13 +1,14 @@
 package view;
 
 import utils.Validation;
+
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public abstract class Menu<T> {
 
     protected String title;
     protected ArrayList<T> mChon;
-    protected Menu<T> parentMenu;
 
     public Menu() {
     }
@@ -18,10 +19,6 @@ public abstract class Menu<T> {
         for (String s : mc) {
             mChon.add((T) s);
         }
-    }
-    
-    public void setParentMenu(Menu<T> parentMenu) {
-        this.parentMenu = parentMenu;
     }
 
     public void display() {
@@ -38,26 +35,10 @@ public abstract class Menu<T> {
         display();
         return Validation.getIntFromInput("selection");
     }
-    
-    public void returnToParentMenu() {
-        if (parentMenu != null) {
-            parentMenu.run();
-        } else {
-            System.out.println("Cannot return to parent menu. Parent menu not set.");
-        }
-    }
 
-//    public void goBack() {
-//        if (!menuStack.isEmpty()) {
-//            Menu<T> previousMenu = menuStack.pop();
-//            previousMenu.run();
-//        } else {
-//            System.out.println("Cannot go back. No previous menu available.");
-//        }
-//    }
-    public abstract void execute(int n);
+    public abstract void execute(int n) throws ParseException;
 
-    public void run() {
+    public void run() throws ParseException {
         while (true) {
             int n = getSelected();
             execute(n);

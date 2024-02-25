@@ -44,10 +44,10 @@ public class FuramaController extends Menu {
                 try {
                     String[] mchon = {"Display list facility",
                                       "Add new facility",
-                                      "Edit facility maintenance",
+                                      "Display list facility maintenance",
                                       "Return main menu"};
                     FacilityManagement facilityManagement = new FacilityManagement("---------- MENU ----------",mchon);
-                    facilityManagement.setParentMenu(this);
+                    // facilityManagement.setParentMenu(this);
                     facilityManagement.run();
                 } catch (Exception e) {
                 }

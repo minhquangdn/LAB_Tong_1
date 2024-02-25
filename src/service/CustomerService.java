@@ -37,12 +37,9 @@ public class CustomerService {
     public void addCus(){
         boolean checkID = false;
         String codeId;
-        System.out.println("\nAdd new employee");
-        
-
-        
+        System.out.println("\nAdd new employee");      
             do{
-                codeId = Validation.getCusIDFromInput("ID");
+                codeId = Validation.getCusIDFromInput("ID <KH-YYYY> (Y is number)");
                 
                 if(checkExistID(codeId, listCus)){
                     checkID = false;
@@ -54,7 +51,7 @@ public class CustomerService {
 
             String perName = Validation.getPerNameFromInput("Name");
         
-            Date perBirth = Validation.getBirthFromInput("Birth");
+            Date perBirth = Validation.getBirthFromInput("Birth <dd/MM/yyyy>");
 
             String perSex = Validation.getStringFromInput("Sex");
 
@@ -84,7 +81,7 @@ public class CustomerService {
             System.out.println("                          \t~~~~~~~~~~~~~~~~~~~~~~~~ EDIT Employee~~~~~~~~~~~~~~~~~~~~~~~~");
             do{
 
-                perId = Validation.getStringFromInput("ID");
+                perId = Validation.getStringFromInput("ID <KH-YYYY> (Y is number)");
                 if (checkExistID(perId, listCus)) {
                     System.out.println("~~~~~~~~~What type do you want to change?");
                     System.out.println(
@@ -120,7 +117,7 @@ public class CustomerService {
                     case 2: 
                         System.out.println("~~~~~~~~~What date of birth you want to change?");
                         
-                            Date date = Validation.getBirthFromInput("date of birth");
+                            Date date = Validation.getBirthFromInput("Birth <dd/MM/yyyy>");
                             for(Customer cus : listCus){
                                 if (cus.getPerId().equals(perId)) {
                                     cus.setPerBirth(date);
@@ -166,7 +163,7 @@ public class CustomerService {
                         break;
                     case 7:
                         System.out.println("~~~~~~~~~What Level you want to change?");
-                        String level = Validation.getStringFromInput("level");
+                        String level = Validation.getStringFromInput("Level");
                         for(Customer  cus : listCus){
                             if ( cus.getPerId().equals(perId)) {
                                  cus.setEmpLevel(level);
