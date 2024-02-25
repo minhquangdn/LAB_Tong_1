@@ -10,6 +10,8 @@ public class FuramaController extends Menu {
     // BookingManagement bookingManagement = new BookingManagement();
     // PromotionManagement promotionManagement = new PromotionManagement();
 
+    public static FuramaController parentMenu;
+
     public FuramaController() {
     }
 
@@ -41,6 +43,7 @@ public class FuramaController extends Menu {
                                       "Edit customer",
                                       "Return main menu"};
                     CustomerManagement customerManagement = new CustomerManagement("---------- CUSTOMER MANAGEMENT MENU ----------",mchon);
+                    customerManagement.setParentMenu(this); // Thiết lập menu cha là FuramaController
                     customerManagement.run();
                     break;
                 } catch (Exception e) {
@@ -54,7 +57,7 @@ public class FuramaController extends Menu {
                                       "Display list facility maintenance",
                                       "Return main menu"};
                     FacilityManagement facilityManagement = new FacilityManagement("---------- FACILITY MANAGEMENT MENU ----------",mchon);
-                    // facilityManagement.setParentMenu(this);
+                    facilityManagement.setParentMenu(this);
                     facilityManagement.run();
                 } catch (Exception e) {
                 }
@@ -70,6 +73,7 @@ public class FuramaController extends Menu {
                                       "Edit contracts",
                                       "Return main menu"};
                     BookingManagement bookingManagement = new BookingManagement("---------- BOOKING MANAGEMENT MENU ----------",mchon);
+                    bookingManagement.setParentMenu(this);
                     bookingManagement.run();
                     break;
                 } catch (Exception e) {

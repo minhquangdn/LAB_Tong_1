@@ -17,7 +17,7 @@ public abstract class Menu<T> {
         title = td;
         mChon = new ArrayList<>();
         for (String s : mc) {
-            mChon.add((T) s);
+            mChon.add((T)s);
         }
     }
 

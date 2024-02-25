@@ -4,6 +4,8 @@
  */
 package controller;
 
+import java.text.ParseException;
+
 import service.CustomerService;
 import view.Menu;
 
@@ -14,6 +16,7 @@ import view.Menu;
 public class CustomerManagement extends Menu {
 
     CustomerService customerService = new CustomerService();
+    FuramaController parentMenu; // Thêm thuộc tính để lưu trữ menu cha
 
     public CustomerManagement() {
     }
@@ -22,8 +25,12 @@ public class CustomerManagement extends Menu {
         super(td, mc);
     }
 
+    public void setParentMenu(FuramaController parentMenu) {
+        this.parentMenu = parentMenu;
+    }
+
     @Override
-    public void execute(int n) {
+    public void execute(int n) throws ParseException {
         switch (n){
             case 1 ->{ //"Display list customers"
                 customerService.displayList();
@@ -39,6 +46,7 @@ public class CustomerManagement extends Menu {
             
             case 4 ->{ // "Return main menu"
                 System.out.println("Return main menu..");
+                parentMenu.run(); // Gọi phương thức run() của menu cha (FuramaController)
             }
         }
     }

@@ -115,8 +115,8 @@ public class FacilityService {
         displayFacility();
         String choice = "ÿ";
         do {
-            System.out.println("Nhap vao service type: ");
-            String svType = Validation.getSvTypeFromInput("Enter service type(Villa/House/Room): ");
+            System.out.println("Enter the service type: ");
+            String svType = Validation.getSvTypeFromInput("service type (Villa/House/Room)");
             String svID = null;
             if (svType.equalsIgnoreCase("villa")) {
                 int dem = 0;
@@ -125,7 +125,7 @@ public class FacilityService {
                         dem++;
                     }
                 }
-                svID = "SVVL" + String.format("%04d", ++dem);
+                svID = "SVVL-" + String.format("%04d", ++dem);
             }
 
             if (svType.equalsIgnoreCase("room")) {
@@ -151,8 +151,9 @@ public class FacilityService {
             Facility nFacility = addFacility(svID);
             listFacility.add(nFacility);
             System.out.println("Do you want to continue to add? (Y/N)");
-            choice = Validation.getStringFromInput(choice);
+            choice = Validation.getStringFromInput("your choice");
         } while (choice.equalsIgnoreCase("y"));
+        System.out.println("Add successfully!");
     }
 
     public void displayFacilityMaintainence() {
@@ -163,24 +164,24 @@ public class FacilityService {
     
     
     Facility addFacility(String svID) {
-        String name = Validation.getStringFromInput("Enter service name: ");
-        int square = Validation.getAreaOrPoolFromInput("Enter the square of Area");
+        String name = Validation.getStringFromInput("service name");
+        int square = Validation.getAreaOrPoolFromInput("the square of Area");
         System.out.println("Enter the service price");
         long price = sc.nextLong();
-        int svPeople = Validation.getSvPeopleFromInput("Enter the number of people: ");
+        int svPeople = Validation.getSvPeopleFromInput("the number of people");
         String type = null;
         if (svID.contains("RO")) {
-            String service = Validation.getStringFromInput("Enter free service: ");
+            String service = Validation.getStringFromInput("free service");
             return (new Room(svID, name, square, price, svPeople, type, service));
         } else if (svID.contains("HO")) {
-            String houseType = Validation.getStringFromInput("Enter the house type: ");
-            String floor = Validation.getStringFromInput("Enter the floor: ");
+            String houseType = Validation.getStringFromInput("the house type");
+            String floor = Validation.getStringFromInput("the floor");
             return (new House(svID, name, square, price, svPeople, type, houseType, floor));
         } else {
-            String roomType = Validation.getStringFromInput("Enter villa type: ");
-            int pool = Validation.getAreaOrPoolFromInput("Enter pool square");
+            String roomType = Validation.getStringFromInput("villa type");
+            int pool = Validation.getAreaOrPoolFromInput("pool square");
             String poolSquare = String.valueOf(pool);
-            int f = Validation.getIntFromInput("Enter the floor");
+            int f = Validation.getIntFromInput("the floor");
             String floor = String.valueOf(f);
             return (new Villa(svID, name, square, price, f, type, roomType, poolSquare, floor));
         }

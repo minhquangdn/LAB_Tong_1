@@ -13,6 +13,8 @@ import view.Menu;
 public class BookingManagement extends Menu {
     
     BookingService bookingService = new BookingService();
+    FuramaController parentMenu; // Thêm thuộc tính để lưu trữ menu cha
+
 
     public BookingManagement() {
     }
@@ -21,6 +23,10 @@ public class BookingManagement extends Menu {
         super(td, mc);
     }    
     
+    public void setParentMenu(FuramaController parentMenu) {
+        this.parentMenu = parentMenu;
+    }
+
     @Override
     public void execute(int n) throws ParseException {
         switch (n){
@@ -50,6 +56,7 @@ public class BookingManagement extends Menu {
         
             case 6 ->{ // "Return main menu"
                 System.out.println("Return main menu..");
+                parentMenu.run(); // Gọi phương thức run() của menu cha (FuramaController)
             }
 
          

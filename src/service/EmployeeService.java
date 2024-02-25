@@ -59,7 +59,7 @@ public class EmployeeService  {
         
         String perName = Validation.getPerNameFromInput("Name");
 
-        Date perBirth = Validation.getBirthFromInput("date of birth");
+        Date perBirth = Validation.getBirthFromInput("Birth <dd/MM/yyyy>");
 
         String perSex = Validation.getStringFromInput("Sex");
 
@@ -126,7 +126,7 @@ public class EmployeeService  {
             case 2: 
                  System.out.println("~~~~~~~~~What date of birth you want to change?");
                 
-                    Date date = Validation.getBirthFromInput("date of birth");
+                    Date date = Validation.getBirthFromInput("Birth <dd/MM/yyyy>");
                     for(Employee emp : listEmp){
                         if (emp.getPerId().equals(perId)) {
                             emp.setPerBirth(date);

@@ -8,7 +8,7 @@ import view.Menu;
 public class EmployeeManagement extends Menu {
 
     EmployeeService employeeService = new EmployeeService();
-    private FuramaController parentMenu; // Thêm thuộc tính để lưu trữ menu cha
+    FuramaController parentMenu; // Thêm thuộc tính để lưu trữ menu cha
 
     public EmployeeManagement() {
     }

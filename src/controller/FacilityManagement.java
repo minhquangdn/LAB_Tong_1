@@ -10,13 +10,18 @@ import view.Menu;
 public class FacilityManagement extends Menu {
 
     FacilityService facilityService = new FacilityService();
+    FuramaController parentMenu; // Thêm thuộc tính để lưu trữ menu cha
 
     public FacilityManagement() {
     }
 
     public FacilityManagement(String td, String[] mc) {
         super(td, mc);
-    }                            
+    }          
+    
+    public void setParentMenu(FuramaController parentMenu) {
+        this.parentMenu = parentMenu;
+    }
 
     @Override
     public void execute(int n) {
