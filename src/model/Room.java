@@ -9,7 +9,7 @@ public class Room extends Facility{
     
     private String service;
 
-    public Room(String service, String id, String name, int square, long price, int numOfPer, String type) {
+    public Room(String id, String name, int square, long price, int numOfPer, String type, String service) {
         super(id, name, square, price, numOfPer, type);
         this.service = service;
     }
