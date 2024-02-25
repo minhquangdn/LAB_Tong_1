@@ -35,6 +35,7 @@ public class FacilityManagement extends Menu {
             
             case 4 ->{ // "Return main menu"
                 System.out.println("Return main menu..");
+                return;
             }
         }
     }

@@ -218,17 +218,17 @@ public class Validation {
             }
         }
     }
-    
+
     public static String getSvIDFromInput(String name){
-    //name: "Service ID <SVxx-yyyy> (xx is VL/HO/RO,y is a number)"
+        //name = "service name <villa/room/house>"
         Scanner scanner = new Scanner(System.in);
         String input;
         boolean isValid = false;
         do {
             System.out.print("Enter " + name + ": ");
-            input = scanner.nextLine();
+            input = scanner.nextLine().toLowerCase();
 
-            if (input.matches("SV(VL|HO|RO)-\\d{4}")) {
+            if (input.equalsIgnoreCase("villa")||input.equalsIgnoreCase("house")||input.equalsIgnoreCase("room")) {
                 isValid = true;
                 System.out.println("Enter successfully!");
             } else {
@@ -236,7 +236,8 @@ public class Validation {
             }
         } while (!isValid);      
         return input;
-    }    
+    }
+    
     
     public static int getAreaOrPoolFromInput(String name){
         Scanner sc = new Scanner(System.in);
@@ -257,6 +258,7 @@ public class Validation {
             }
         }
     }
+
     
     public static Date getBirthFromInput(String name){
         Scanner sc = new Scanner(System.in);
@@ -313,4 +315,6 @@ public class Validation {
         
         return age;
     }  
+
+
 }

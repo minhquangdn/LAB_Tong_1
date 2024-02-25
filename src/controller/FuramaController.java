@@ -4,6 +4,12 @@ import view.Menu;
 
 public class FuramaController extends Menu {
 
+    // CustomerManagement customerManagement = new CustomerManagement();
+    // EmployeeManagement employeeManagement = new EmployeeManagement();
+    // FacilityManagement facilityManagement = new FacilityManagement();
+    // BookingManagement bookingManagement = new BookingManagement();
+    // PromotionManagement promotionManagement = new PromotionManagement();
+
     public FuramaController() {
     }
 
@@ -14,7 +20,7 @@ public class FuramaController extends Menu {
     @Override
     public void execute(int n) {
         switch (n) {
-            case 1: {
+            case 1: {          
                 try {
                     String[] mchon = {"Display list employees",
                                       "Add new employee",
