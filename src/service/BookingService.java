@@ -1,19 +1,16 @@
 package service;
 
 import model.Facility;
-import model.Room;
 import model.Villa;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeSet;
 import model.Booking;

@@ -10,14 +10,11 @@ public abstract class Person {
     String perCMND;
     String perPhone;
     String perEmail;
-
-    
     
     public Person(String perId) {
         this.perId = perId;
     }
-    public Person(String perId, String perName, Date perBirth, String perSex, String perCMND, String perPhone,
-            String perEmail) {
+    public Person(String perId, String perName, Date perBirth, String perSex, String perCMND, String perPhone, String perEmail) {
         this.perId = perId;
         this.perName = perName;
         this.perBirth = perBirth;

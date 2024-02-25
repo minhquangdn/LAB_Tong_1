@@ -20,39 +20,40 @@ public class FuramaController extends Menu {
     @Override
     public void execute(int n) {
         switch (n) {
-            case 1: {          
+            case 1: { //Employee Management         
                 try {
                     String[] mchon = {"Display list employees",
                                       "Add new employee",
                                       "Edit employee",
                                       "Return main menu"};
-                   EmployeeManagement employeeManagement = new EmployeeManagement("---------- MENU ----------",mchon);
+                   EmployeeManagement employeeManagement = new EmployeeManagement("---------- EMPLOYEE MANAGEMENT MENU ----------",mchon);
+                   employeeManagement.setParentMenu(this); // Thiết lập menu cha là FuramaController
                    employeeManagement.run();
                    break;
                 } catch (Exception e) {
                 }
             }
 
-            case 2: {
+            case 2: { //Customer Management
                 try {
                     String[] mchon = {"Display list customers",
                                       "Add new customer",
                                       "Edit customer",
                                       "Return main menu"};
-                    CustomerManagement customerManagement = new CustomerManagement("---------- MENU ----------",mchon);
+                    CustomerManagement customerManagement = new CustomerManagement("---------- CUSTOMER MANAGEMENT MENU ----------",mchon);
                     customerManagement.run();
                     break;
                 } catch (Exception e) {
                 }
             }
 
-            case 3: {
+            case 3: { //Facility Management
                 try {
                     String[] mchon = {"Display list facility",
                                       "Add new facility",
                                       "Display list facility maintenance",
                                       "Return main menu"};
-                    FacilityManagement facilityManagement = new FacilityManagement("---------- MENU ----------",mchon);
+                    FacilityManagement facilityManagement = new FacilityManagement("---------- FACILITY MANAGEMENT MENU ----------",mchon);
                     // facilityManagement.setParentMenu(this);
                     facilityManagement.run();
                 } catch (Exception e) {
@@ -60,7 +61,7 @@ public class FuramaController extends Menu {
                 break;
             }
 
-            case 4: {
+            case 4: { //Booking Management
                 try {
                     String[] mchon = {"Add new booking",
                                       "Display list booking",
@@ -68,19 +69,19 @@ public class FuramaController extends Menu {
                                       "Display list contracts",
                                       "Edit contracts",
                                       "Return main menu"};
-                    BookingManagement bookingManagement = new BookingManagement("---------- MENU ----------",mchon);
+                    BookingManagement bookingManagement = new BookingManagement("---------- BOOKING MANAGEMENT MENU ----------",mchon);
                     bookingManagement.run();
                     break;
                 } catch (Exception e) {
                 }
             }
 
-            case 5: {
+            case 5: { //Promotion Management
                 try {
                     String[] mchon = {"Display list customers use service",
                                       "Display list customers get voucher",
                                       "Return main menu"};
-                    PromotionManagement promotionManagement = new PromotionManagement("---------- MENU ----------",mchon);
+                    PromotionManagement promotionManagement = new PromotionManagement("---------- PROMOTION MANAGEMENT MENU ----------",mchon);
                     promotionManagement.run();
                     break;
                 } catch (Exception e) {

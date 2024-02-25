@@ -23,7 +23,7 @@ public class Room extends Facility{
 
     @Override
     public String toString() {
-        return (String.format("| %-12s | %-12s | %-12s | %-12s | %-20s | %-12s |", getId(),getName(),getSquare()+"m2",getPrice()+"$",getNumOfPer(),getType(),getService()));
+        return (String.format("| %-12s | %-12s | %-12s | %-12s | %-20s | %-12s | %-12s |", getId(),getName(),getSquare()+"m2",getPrice()+"$",getNumOfPer(),getType(),getService()));
     }
     
     

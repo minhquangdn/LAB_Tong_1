@@ -219,7 +219,7 @@ public class Validation {
         }
     }
 
-    public static String getSvIDFromInput(String name){
+    public static String getSvTypeFromInput(String name){
         //name = "service name <villa/room/house>"
         Scanner scanner = new Scanner(System.in);
         String input;

@@ -11,25 +11,21 @@ public class PromotionManagement extends Menu {
     public PromotionManagement(String td, String[] mc) {
         super(td, mc);
     }
-    
+
     @Override
     public void execute(int n) {
         switch (n){
-            case 1 ->{
+            case 1 ->{ //"Display list customers use service"
                 
             }
             
-            case 2 ->{
+            case 2 ->{ //"Display list customers get voucher"
                 
             }
             
-            case 3 ->{
+            case 3 ->{ // "Return main menu"
                 
-            }
-            
-            case 4 ->{
-                
-            }
+            }         
         }
     }
 }
