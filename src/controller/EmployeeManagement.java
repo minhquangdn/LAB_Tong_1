@@ -24,19 +24,23 @@ public class EmployeeManagement extends Menu {
     @Override
     public void execute(int n) throws ParseException {
         switch (n) {
-            case 1: //"Display list employees"
-                employeeService.displayList();
+            case 1: //"Load list employees"
+                employeeService.getListFromFile();
                 break;
             
-            case 2: //"Add new employee"
+            case 2: //"Display list employees"
+                employeeService.displayList();
+            break;
+
+            case 3: //"Add new employee"
                 employeeService.addEmp();
                 break;
             
-            case 3: //"Edit employee"
+            case 4: //"Edit employee"
                 employeeService.editEmp();
                 break;
             
-            case 4: //"Return main menu"
+            case 5: //"Return main menu"
                 System.out.println("Return main menu..");
                 parentMenu.run(); // Gọi phương thức run() của menu cha (FuramaController)
                 break;

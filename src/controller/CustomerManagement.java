@@ -32,19 +32,24 @@ public class CustomerManagement extends Menu {
     @Override
     public void execute(int n) throws ParseException {
         switch (n){
-            case 1 ->{ //"Display list customers"
-                customerService.displayList();
+            case 1 ->{ //"Load list customers"
+                customerService.getListFromFile();
             }
             
-            case 2 ->{ //"Add new customer"
+            case 2 ->{ //"Display list customers"
+                customerService.displayList();
+            }
+        
+
+            case 3 ->{ //"Add new customer"
                 customerService.addCus();
             }
             
-            case 3 ->{ // "Edit customer"
+            case 4 ->{ // "Edit customer"
                 customerService.editCus();
             }
             
-            case 4 ->{ // "Return main menu"
+            case 5 ->{ // "Return main menu"
                 System.out.println("Return main menu..");
                 parentMenu.run(); // Gọi phương thức run() của menu cha (FuramaController)
             }
