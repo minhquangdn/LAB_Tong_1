@@ -159,11 +159,9 @@ public class FacilityService{
                 }
                 svID = "SVRO-" + String.format("%04d", ++dem);
             } else if (choice == 4) break;
-            Facility nFacility = addFacility(svID);
             listFacility.add(nFacility);
-            fList.add(nFacility);
         } while (choice <= 4);
-        FacilityRepository.writeFile(fList);
+        FacilityRepository.writeFile(listFacility);
         System.out.println("Add successfully!");
     }
 
