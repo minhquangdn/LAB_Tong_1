@@ -73,6 +73,20 @@ public class Booking implements Comparable<Booking>{
         Booking.bill = bill;
     }
 
+    public int getYear(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int year = calendar.get(Calendar.YEAR);
+    return year;
+    }
+
+    public int getMonth(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int month = calendar.get(Calendar.MONTH);
+    return month ;
+    }
+
    
 
     @Override
