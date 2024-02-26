@@ -52,9 +52,7 @@ public class FacilityService{
                 "Pool Square", "Floor"));
         System.out.println(
                 "|--------------|--------------|--------------|--------------|----------------------|--------------|--------------|--------------|--------------|");
-        System.out.println(
-                "|----------------------------------------------------------------------------------------------------------------------------------------------|");
-
+        
         for (Facility facility : listFacility) {
             if (facility.getId().contains("VL")) {
                 Facility nf = (Villa) facility;
@@ -74,8 +72,7 @@ public class FacilityService{
                 "Service name", "Square", "Price", "Number of person", "Type", "Service"));
         System.out.println(
                 "|--------------|--------------|--------------|--------------|----------------------|--------------|--------------|");
-        System.out.println(
-                "|----------------------------------------------------------------------------------------------------------------|");
+        
 
         for (Facility facility : listFacility) {
             if (facility.getId().contains("HO")) {
@@ -96,8 +93,7 @@ public class FacilityService{
                 "Service name", "Square", "Price", "Number of person", "Type", "Service"));
         System.out.println(
                 "|--------------|--------------|--------------|--------------|----------------------|--------------|--------------|");
-        System.out.println(
-                "+----------------------------------------------------------------------------------------------------------------+");
+    
 
         for (Facility facility : listFacility) {
             if (facility.getId().contains("RO")) {
