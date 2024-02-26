@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package service;
+package repository;
 
 import model.Facility;
+import service.BookingService;
 import model.Booking;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
