@@ -21,7 +21,6 @@ public class FacilityService {
     static Scanner sc = new Scanner(System.in);
 
     public FacilityService() throws IOException {
-        FacilityRepository.readFile(listFacility);
     }
 
     public List<Facility> getListFacility() {
@@ -41,7 +40,7 @@ public class FacilityService {
     }
 
     public void displayFacility() {
-
+        FacilityRepository.readFile(listFacility);
         System.out.println(
                 "+----------------------------------------------------------------------------------------------------------------------------------------------+");
         System.out.println(
@@ -129,6 +128,7 @@ public class FacilityService {
     // }
 
     public void addNewFacility() {
+        displayFacility();
         List<Facility> fList = new ArrayList<>();
         int choice = 1;
         do {
@@ -172,6 +172,7 @@ public class FacilityService {
     }
 
     public void displayFacilityMaintainence() {
+        FacilityRepository.readFile(listFacility);
         FacilityRepository facilityRepository = new FacilityRepository();
         facilityRepository.addDataFromList(listFacility);
         facilityRepository.printFacilityMap();
