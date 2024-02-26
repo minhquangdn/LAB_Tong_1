@@ -6,31 +6,34 @@ package repository;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import model.Customer;
+import model.Employee;
 import utils.Validation;
 
 /**
  *
  * @author DELL
  */
-public class CustomerRepository {
-    String filePath = "List Of Customer.txt";
+public class EmployeeRepository {
+    String filePath = "List Of Employees.txt";
 
-    public List<Customer> loadListCusFromFile(){
-        List<Customer> listOfCustomers = new ArrayList<>();
+
+    public List<Employee> loadListEmpFromFile(){
+        List<Employee> listOfEmployees = new ArrayList<>();
         try {
             Scanner sc = new Scanner(new File(filePath));
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 String[] data = line.split("\\|");
-                if (data.length == 9) {
+                if (data.length == 10) {
                     String idString = data[0].split(":")[1].trim();
-                    boolean checkID = Validation.checkIDCus(idString, listOfCustomers);
+                    boolean checkID = Validation.checkIDEmp(idString, listOfEmployees);
 
                     String perName = data[1].split(":")[1].trim();
 
@@ -49,24 +52,25 @@ public class CustomerRepository {
 
                     String emplevel = data[7].split(":")[1].trim();
 
-                    String cusAddress = data[8].split(":")[1].trim();
+                    String empPosition = data[8].split(":")[1].trim();
+
+                    String  empSalary_String = data[9].split(":")[1].trim();
 
                     if (checkID && perBirth_bool && perCMND_bool && perPhone_Bool) {
                         String perId = idString;
                         String perCMND = perCMND_String;
                         String perPhone = perPhone_String;
+                        int empSalary = Integer.parseInt(empSalary_String);
                         Date perBirth = Validation.parse(perBirth_String);
+                        Employee employee  = new Employee(perId, perName, perBirth, perSex, perCMND, perPhone, perEmail, emplevel, empPosition, empSalary);
 
-                        Customer customer = new Customer(perId, perName, perBirth, perSex, perCMND, perPhone, perEmail, emplevel, cusAddress);
-
-                        listOfCustomers.add(customer);
+                        listOfEmployees.add(employee);
                     }
                 }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return listOfCustomers;
+        return listOfEmployees;
     }
-    
 }
