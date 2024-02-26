@@ -20,7 +20,7 @@ public class FacilityService {
     static Scanner sc = new Scanner(System.in);
 
     public FacilityService() {
-        addCung();
+        FacilityRepository.readFile(listFacility);
     }
 
     public List<Facility> getListFacility() {
@@ -110,24 +110,25 @@ public class FacilityService {
 
     };
 
-    void addCung() {
-        if (listFacility.isEmpty()) {
-            listFacility.add(new Villa("SVVL-0001", "Villa 1", 600, 2000, 10, "Villa", "luxury", "80", "4"));
-            listFacility.add(new Villa("SVVL-0002", "Villa 2", 400, 400, 10, "Villa", "Standard", "60", "3"));
-            listFacility.add(new Villa("SVVL-0003", "Villa 3", 250, 200, 8, "Villa", "Standard", "50", "3"));
+    // void addCung() {
+    //     if (listFacility.isEmpty()) {
+    //         listFacility.add(new Villa("SVVL-0001", "Villa 1", 600, 2000, 10, "Villa", "luxury", "80", "4"));
+    //         listFacility.add(new Villa("SVVL-0002", "Villa 2", 400, 400, 10, "Villa", "Standard", "60", "3"));
+    //         listFacility.add(new Villa("SVVL-0003", "Villa 3", 250, 200, 8, "Villa", "Standard", "50", "3"));
 
-            listFacility.add(new House("SVHO-0001", "House 1", 200, 200, 6, "House", "luxury", "2"));
-            listFacility.add(new House("SVHO-0002", "House 2", 100, 100, 4, "House", "luxury", "1"));
-            listFacility.add(new House("SVHO-0003", "House 3", 80, 50, 4, "House", "Standard", "1"));
+    //         listFacility.add(new House("SVHO-0001", "House 1", 200, 200, 6, "House", "luxury", "2"));
+    //         listFacility.add(new House("SVHO-0002", "House 2", 100, 100, 4, "House", "luxury", "1"));
+    //         listFacility.add(new House("SVHO-0003", "House 3", 80, 50, 4, "House", "Standard", "1"));
 
-            listFacility.add(new Room("SVRO-0001", "Room 1", 50, 100, 4, "Room", "Buffet"));
-            listFacility.add(new Room("SVRO-0002", "Room 2", 40, 100, 4, "Room", "Wifi"));
-            listFacility.add(new Room("SVRO-0003", "Room 3", 40, 100, 4, "Room", "Girl"));
+    //         listFacility.add(new Room("SVRO-0001", "Room 1", 50, 100, 4, "Room", "Buffet"));
+    //         listFacility.add(new Room("SVRO-0002", "Room 2", 40, 100, 4, "Room", "Wifi"));
+    //         listFacility.add(new Room("SVRO-0003", "Room 3", 40, 100, 4, "Room", "Girl"));
 
-        }
-    }
+    //     }
+    // }
 
     public void addNewFacility() {
+        List<Facility> fList = new ArrayList<>();
         int choice = 1;
         do {
             System.out.println("1. Add new villa"
@@ -163,7 +164,9 @@ public class FacilityService {
             } else if (choice == 4) break;
             Facility nFacility = addFacility(svID);
             listFacility.add(nFacility);
+            fList.add(nFacility);
         } while (choice <= 4);
+        FacilityRepository.writeFile(fList);
         System.out.println("Add successfully!");
     }
 
