@@ -127,11 +127,8 @@ public class FacilityService{
     //     }
     // }
 
-<<<<<<< HEAD
-    public void addNewFacility() throws IOException {
-=======
+
     public void addNewFacility() throws Exception {
->>>>>>> 951ba891818df1c899bf7c194d9d4a2af0d6ef65
         List<Facility> fList = new ArrayList<>();
         int choice = 1;
         do {

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 import service.EmployeeService;
@@ -22,7 +23,7 @@ public class EmployeeManagement extends Menu {
     }
 
     @Override
-    public void execute(int n) throws ParseException {
+    public void execute(int n) throws ParseException, IOException {
         switch (n) {
             case 1: //"Load list employees"
                 employeeService.getListFromFile();

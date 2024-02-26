@@ -2,6 +2,7 @@ package view;
 
 import utils.Validation;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -37,12 +38,17 @@ public abstract class Menu<T> {
         return Validation.getIntFromInput("selection");
     }
 
-    public abstract void execute(int n) throws ParseException;
+    public abstract void execute(int n) throws ParseException, IOException, Exception;
 
-    public void run() throws ParseException {
+    public void run() throws ParseException, IOException {
         while (true) {
             int n = getSelected();
-            execute(n);
+            try {
+                execute(n);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
             if (n > mChon.size()) {
                 break;
             }

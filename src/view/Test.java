@@ -1,12 +1,13 @@
 package view;
 
+import java.io.IOException;
 import java.text.ParseException;
 import controller.FuramaController;
 
 
 
 public class Test {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, IOException {
         String[] mchon = {"Employee Management",
                           "Customer Management",
                           "Facility Management",

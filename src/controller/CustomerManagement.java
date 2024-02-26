@@ -4,6 +4,7 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 import service.CustomerService;
@@ -30,7 +31,7 @@ public class CustomerManagement extends Menu {
     }
 
     @Override
-    public void execute(int n) throws ParseException {
+    public void execute(int n) throws ParseException, IOException {
         switch (n){
             case 1 ->{ //"Load list customers"
                 customerService.getListFromFile();

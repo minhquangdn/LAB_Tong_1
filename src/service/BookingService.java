@@ -3,6 +3,7 @@ package service;
 import model.Facility;
 import model.Villa;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class BookingService {
         listBooking.add(new Booking("0005", checkdate("20/2/2024"), checkdate("24/2/2024"), checkdate("27/2/2024"), "KH0005", bill));
     }
 
-    public void addBooking() throws ParseException {
+    public void addBooking() throws ParseException, IOException {
         String bookingId, customerId, serviceId;
         Date checkinDate, checkoutDate, now;
         Facility f;

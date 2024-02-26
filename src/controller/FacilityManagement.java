@@ -1,7 +1,5 @@
 package controller;
 
-import java.text.ParseException;
-
 import service.FacilityService;
 import view.Menu;
 
@@ -26,7 +24,7 @@ public class FacilityManagement extends Menu {
     }
 
     @Override
-    public void execute(int n) throws ParseException {
+    public void execute(int n) throws Exception {
         switch (n){
             case 1 ->{ //"Display list facility"
                 facilityService.displayFacility();

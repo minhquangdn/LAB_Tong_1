@@ -1,6 +1,7 @@
 
 package controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 import service.BookingService;
@@ -28,7 +29,7 @@ public class BookingManagement extends Menu {
     }
 
     @Override
-    public void execute(int n) throws ParseException {
+    public void execute(int n) throws ParseException, IOException {
         switch (n){
             case 1 ->{ // "Add new booking"
                 try {
