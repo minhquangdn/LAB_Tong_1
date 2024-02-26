@@ -5,7 +5,12 @@ package utils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+
+import model.Customer;
+import model.Employee;
+
 import java.util.Date;
 
 public class Validation {
@@ -316,5 +321,68 @@ public class Validation {
         return age;
     }  
 
+    public static Date parse(String dateString) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = dateFormat.parse(dateString);
+            return date;
+        } catch (ParseException e) {
+            return null;
+        }
+    }
 
+    public static boolean isValidPhone(String phone){
+        if (phone.matches("0\\d{9}")) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isValidCMND(String CMND){
+        if (CMND.matches("\\d{9}")||CMND.matches("\\d{12}")) {
+            return true;
+        }
+        return false;
+    }
+
+     //kiểm tra chuỗi kí tự có phải là chuỗi date theo định dạng không
+     public static boolean isValidDate(String dateString, String dateFormat) {
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+        sdf.setLenient(false);
+
+        try {
+            sdf.parse(dateString);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
+    public static  boolean checkIDEmp(String id, List<Employee> list) {
+        for(Employee emp : list){
+            if (id.equals(emp.getPerId())) {
+                return false;
+            }     
+        }
+
+        if (id.matches("NV-\\d{4}")) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static  boolean checkIDCus(String id, List<Customer> list) {
+        for(Customer cus : list){
+            if (id.equals(cus.getPerId())) {
+                return false;
+            }     
+        }
+
+        if (id.matches("KH-\\d{4}")) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
