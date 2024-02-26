@@ -37,7 +37,8 @@ public class Customer extends Person{
     @Override
     public String toString() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        return "Employee ["+"perID ="+perId+",perName = "+perName+",perBirth= "+dateFormat.format(perBirth)+",perSex= "+perSex+",perCMND = "+perCMND+",perPhone= "+perPhone+",perEmail= "+perEmail+",cusLevel=" + cusLevel + ", cusAddress=" + cusAddress + "]";
+        // return "Employee ["+"perID ="+perId+",perName = "+perName+",perBirth= "+dateFormat.format(perBirth)+",perSex= "+perSex+",perCMND = "+perCMND+",perPhone= "+perPhone+",perEmail= "+perEmail+",cusLevel=" + cusLevel + ", cusAddress=" + cusAddress + "]";
+        return (String.format("| %-12s  | %-20s  | %-20s  | %-12s  | %-20s  | %-12s  | %-25s  | %-12s  | %-35s  |", getPerId(),getPerName(),dateFormat.format(getPerBirth()),getPerSex(),getPerCMND(),getPerPhone(),getPerEmail(),getEmpLevel(),getEmpAddress()));
     }
   
 
