@@ -1,5 +1,6 @@
 package service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,7 +20,7 @@ public class FacilityService {
     List<Facility> listFacility = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
-    public FacilityService() {
+    public FacilityService() throws IOException {
         FacilityRepository.readFile(listFacility);
     }
 
