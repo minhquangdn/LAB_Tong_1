@@ -10,7 +10,9 @@ public class Employee extends Person{
     String empLevel;
     String empPosition;
     int empSalary;
-  
+    public Employee(String perId){
+        super(perId);
+    }
 
     public Employee(String perId, String perName, Date perBirth, String perSex, String perCMND, String perPhone,
             String perEmail, String empLevel, String empPosition, int empSalary) {
@@ -49,8 +51,8 @@ public class Employee extends Person{
     @Override
     public String toString() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return (String.format("| %-12s |  %-20s  | %-20s   | %-12s   | %-20s   | %-12s  | %-25s  | %-12s  | %-12s  | %-12s |", getPerId(),getPerName(),dateFormat.format(getPerBirth()),getPerSex(),getPerCMND(),getPerPhone(),getPerEmail(),getEmpLevel(),getEmpPosition(),getEmpSalary()+"$"));
         
-        return "Employee ["+"perID ="+perId+",perName = "+perName+",perBirth= "+dateFormat.format(perBirth)+",perSex= "+perSex+",perCMND = "+perCMND+",perPhone= "+perPhone+",perEmail= "+perEmail+",empLevel=" + empLevel + ", empPosition=" + empPosition + ", empSalary=" + empSalary + "]";
     }
     
 

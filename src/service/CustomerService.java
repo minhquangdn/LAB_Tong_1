@@ -6,8 +6,11 @@ import java.util.List;
 
 import utils.Validation;
 import model.Customer;
+import model.Employee;
+import repository.CustomerRepository;
 
 public class CustomerService {
+    CustomerRepository customerRepository = new CustomerRepository();
     List<Customer> listCus;
     public CustomerService(){
         listCus = new ArrayList<>();
@@ -23,31 +26,48 @@ public class CustomerService {
     }
 
     public void displayList(){
+
         if(!listCus.isEmpty()){
-            System.out.println("                          \t~~~~~~~~~~~~~~~~~~~~~~~~ List Customer~~~~~~~~~~~~~~~~~~~~~~~~");
-            System.out.println();
+
+            System.out.println("+----------------------------------------------------------------------------------------------------------------------------------------------+");
+            System.out.println("|                                                                 List of Customer                                                                |");
+            System.out.println("|----------------------------------------------------------------------------------------------------------------------------------------------|");
+            System.out.println(String.format("| %-12s |  %-20s  | %-20s  | %-12s  | %-20s  | %-12s  | %-25s  | %-12s  | %-35s  |", "Customer code", "Customer name", "Date of Birth", "Sex", "CMND", "Phone", "Email", "Level", "Address"));
+            System.out.println("|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
+            System.out.println("|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
+
             for(Customer cus : listCus){
-                System.out.println(cus);
+                System.out.println(cus.toString());
             }
+            System.out.println("|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
+
+
         }else{
             System.out.println("List is Empty!");
         }
     }
 
     public void addCus(){
-        boolean checkID = false;
-        String codeId;
-        System.out.println("\nAdd new employee");      
-            do{
-                codeId = Validation.getCusIDFromInput("ID <KH-YYYY> (Y is number)");
-                
-                if(checkExistID(codeId, listCus)){
-                    checkID = false;
-                    System.out.println("ID has existed");
-                }else{
-                    checkID = true;
+        String ans;
+        int count = 0;
+        do{
+
+            
+            String cusId = null;
+            System.out.println("\nAdd new Customer");     
+
+            for(Customer cus : listCus){
+                if (cus.getPerId().contains("KH")) {
+                    count++;
+                    cusId = "KH-" + String.format("%04d", ++count);
+                    if (!cusId.equals(cus.getPerId())) {
+                        break;
+                    }
                 }
-            }while(!checkID);
+            }
+            // cusId = "KH-" + String.format("%04d", ++count);
+
+            System.out.println("Customer ID: "+ cusId);
 
             String perName = Validation.getPerNameFromInput("Name");
         
@@ -65,9 +85,12 @@ public class CustomerService {
 
             String cusAddress = Validation.getStringFromInput("Address");
 
-            Customer cus = new Customer(codeId, perName, perBirth, perSex, perCMND, perPhone, perEmail, cusLevel, cusAddress);
+            Customer cus = new Customer(cusId, perName, perBirth, perSex, perCMND, perPhone, perEmail, cusLevel, cusAddress);
             listCus.add(cus);
-        
+
+            System.out.println("Do you want to continue ?[Y/N]");
+            ans = Validation.getChoiceYesNoNFromInput("Answer");
+        }while(ans.equalsIgnoreCase("y"));
       
     }
 
@@ -189,5 +212,10 @@ public class CustomerService {
             System.out.println("!!!!!!!!!!!!!!!!Wrong Format input!!!!!!!!!!!!!!!!");
         }
 
+    }
+
+    public void getListFromFile(){
+        listCus = customerRepository.loadListCusFromFile();
+        displayList();
     }
 }
