@@ -19,7 +19,7 @@ import model.Constract;
 
 public class BookingService {
 
-    TreeSet<Booking> listBooking = new TreeSet<>();
+    public TreeSet<Booking> listBooking = new TreeSet<>();
     Queue<Booking> bookingBill = new LinkedList<>();
     ArrayList<Constract> listConstract = new ArrayList<>();
     Map<Facility, Integer> bill = new HashMap<>();
