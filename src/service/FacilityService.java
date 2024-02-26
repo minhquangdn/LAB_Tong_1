@@ -16,12 +16,11 @@ import utils.Validation;
  *
  * @author Quang
  */
-public class FacilityService {
+public class FacilityService{
     List<Facility> listFacility = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
-    public FacilityService() throws IOException {
-        FacilityRepository.readFile(listFacility);
+    public FacilityService(){
     }
 
     public List<Facility> getListFacility() {
@@ -40,8 +39,8 @@ public class FacilityService {
         return null;
     }
 
-    public void displayFacility() {
-
+    public void displayFacility() throws IOException {
+        FacilityRepository.readFile(listFacility);
         System.out.println(
                 "+----------------------------------------------------------------------------------------------------------------------------------------------+");
         System.out.println(
@@ -128,7 +127,11 @@ public class FacilityService {
     //     }
     // }
 
+<<<<<<< HEAD
     public void addNewFacility() throws IOException {
+=======
+    public void addNewFacility() throws Exception {
+>>>>>>> 951ba891818df1c899bf7c194d9d4a2af0d6ef65
         List<Facility> fList = new ArrayList<>();
         int choice = 1;
         do {
