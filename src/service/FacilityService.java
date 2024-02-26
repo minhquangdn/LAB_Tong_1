@@ -128,7 +128,7 @@ public class FacilityService {
     //     }
     // }
 
-    public void addNewFacility() {
+    public void addNewFacility() throws IOException {
         List<Facility> fList = new ArrayList<>();
         int choice = 1;
         do {
