@@ -6,10 +6,12 @@ import java.util.List;
 
 
 import utils.Validation;
+import model.Customer;
 import model.Employee;
+import repository.EmployeeRepository;
 
 public class EmployeeService  {
-
+    EmployeeRepository employeeRepository = new EmployeeRepository();
     List<Employee> listEmp;
 
     public EmployeeService(){
@@ -27,58 +29,74 @@ public class EmployeeService  {
 
 
     public void displayList(){
-        if(!listEmp.isEmpty()){
-            System.out.println("                          \t~~~~~~~~~~~~~~~~~~~~~~~~ List Employee~~~~~~~~~~~~~~~~~~~~~~~~");
-            System.out.println();
-            for(Employee emp : listEmp){
-                System.out.println(emp);
+      if(!listEmp.isEmpty()){
+
+            System.out.println("|+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+|");
+            System.out.println("|                                                                 List of Employee                                                                                                                       |");
+            System.out.println("|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
+
+            System.out.println(String.format("| %-12s |  %-20s   | %-20s   | %-12s   | %-20s   | %-12s  | %-25s  | %-12s  | %-12s  | %-12s |", "Customer code", "Customer name", "Date of Birth", "Sex", "CMND", "Phone", "Email", "Level", "Position", "Salary"));
+            System.out.println("|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
+            System.out.println("|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
+
+            for(Employee cus : listEmp){
+                System.out.println(cus.toString());
             }
+            System.out.println("|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
+
+
         }else{
             System.out.println("List is Empty!");
         }
     }
 
     public void addEmp(){
-        boolean checkID = false;
-        String codeId;
-        System.out.println("\nAdd new Employee");
-        
-            do{
-                codeId = Validation.getEmpIDFromInput("ID <NV-YYYY> (Y is number)");
-                //check empId validate
-        
-                if(checkExistID(codeId, listEmp)){
-                    checkID = false;
-                    System.out.println("ID has existed");
+        String ans;
+        int count = 0;
+        do{
 
-                }else{
-                    checkID = true;
+            
+            String empId = null;
+            System.out.println("\nAdd new Employee");
+            
+            for(Employee emp : listEmp){
+                if(emp.getPerId().contains("NV")){
+                    count++;
+                    empId = "NV-" + String.format("%04d", ++count);
+                    if (!empId.equals(emp.getPerId())) {
+                        break;
+                    } 
                 }
-        
-            }while(!checkID);
-        
-        String perName = Validation.getPerNameFromInput("Name");
+            } 
+            // empId = "NV-" + String.format("%04d", ++count);
+            
+            System.out.println("Employee ID: "+ empId);
 
-        Date perBirth = Validation.getBirthFromInput("Birth <dd/MM/yyyy>");
+            String perName = Validation.getPerNameFromInput("Name");
 
-        String perSex = Validation.getStringFromInput("Sex");
+            Date perBirth = Validation.getBirthFromInput("Birth <dd/MM/yyyy>");
 
-        String perCMND = Validation.getPerCMNDFromInput("CMND");
+            String perSex = Validation.getStringFromInput("Sex");
 
-        String perPhone = Validation.getPerPhoneFromInput("Phone number");
+            String perCMND = Validation.getPerCMNDFromInput("CMND");
 
-        String perEmail = Validation.getStringFromInput("Email");
+            String perPhone = Validation.getPerPhoneFromInput("Phone number");
 
-        String empLevel = Validation.getStringFromInput("Level");
+            String perEmail = Validation.getStringFromInput("Email");
 
-        String empPosition = Validation.getStringFromInput("Position");
-        
-        int empSalary = Validation.getIntFromInput("salary");
+            String empLevel = Validation.getStringFromInput("Level");
 
-        Employee emp = new Employee(codeId, perName, perBirth, perSex, perCMND, perPhone, perEmail, empLevel, empPosition, empSalary);
+            String empPosition = Validation.getStringFromInput("Position");
+            
+            int empSalary = Validation.getIntFromInput("salary");
 
-        listEmp.add(emp);
-        
+            Employee emp = new Employee(empId, perName, perBirth, perSex, perCMND, perPhone, perEmail, empLevel, empPosition, empSalary);
+
+            listEmp.add(emp);
+
+            System.out.println("Do you want to continue ?[Y/N]");
+            ans = Validation.getChoiceYesNoNFromInput("Answer");
+        }while(ans.equalsIgnoreCase("y"));
        
     }
 
@@ -205,8 +223,22 @@ public class EmployeeService  {
 
         } catch (NumberFormatException e) {
             System.out.println("!!!!!!!!!!!!!!!!Wrong Format input!!!!!!!!!!!!!!!!");
-        }
+        } 
+    }
 
+    // public List<Employee> listFromFile(){
+    //     List<Employee> listFromFile = employeeRepository.loadListEmpFromFile();
+    //     List<Employee> listFromFileFinal = new ArrayList<>();
+    //     for(Employee std : listFromFile){
+    //         if (!checkExistID(std.getPerId(), listFromFileFinal)) {
+    //             listFromFileFinal.add(std);
+    //         }
+    //     }
+    //     return listFromFileFinal;
+    // }
 
+    public void getListFromFile(){
+        listEmp = employeeRepository.loadListEmpFromFile();
+        displayList();
     }
 }
