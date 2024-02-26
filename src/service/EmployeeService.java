@@ -1,5 +1,6 @@
 package service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -238,7 +239,11 @@ public class EmployeeService  {
     // }
 
     public void getListFromFile(){
-        listEmp = employeeRepository.loadListEmpFromFile();
+        try {
+            listEmp = employeeRepository.loadListEmpFromFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         displayList();
     }
 }
