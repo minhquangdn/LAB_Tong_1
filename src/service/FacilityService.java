@@ -125,7 +125,6 @@ public class FacilityService{
 
 
     public void addNewFacility() throws Exception {
-        List<Facility> fList = new ArrayList<>();
         int choice = 1;
         do {
             System.out.println("1. Add new villa"
@@ -159,6 +158,7 @@ public class FacilityService{
                 }
                 svID = "SVRO-" + String.format("%04d", ++dem);
             } else if (choice == 4) break;
+            Facility nFacility = addFacility(svID);
             listFacility.add(nFacility);
         } while (choice <= 4);
         FacilityRepository.writeFile(listFacility);
