@@ -33,4 +33,135 @@ public class FacilityRepository {
             System.out.println("Ten dich vu " + key.getName() + " So lan dung: " + val);
         }
     }
+    
+    public static void readFile(List<Facility> listFacility) throws FileNotFoundException, IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Data\\DataFacility.txt"));
+        String line;
+
+        while ((line = bufferedReader.readLine()) != null) {
+
+            String[] splitLine = line.split(",");
+            String ID = null;
+            String name = null;
+            int square = 0;
+            long price = 0;
+            int numOfPer = 0;
+            String type = "null";
+            boolean flag = true;
+            
+            String roomType = null; //thuoc tinh cua villa
+            String poolSquare = null;
+            String floor = null;
+            
+            String houseType = null; //thuoc tinh cua house
+//            String floor = null;
+            
+            String service = null; //thuoc tinh cua room
+            for (int i = 0; i < 6; i++) {
+                String[] lines = splitLine[i].split("=");
+                if (lines.length != 2) {
+                    break;
+                }
+                String value = lines[1];
+                if (i == 0) {
+                    ID = value;
+                    if (ID.contains("VL")) {
+                        for (int j = 6; j < 9; j++) {
+                            String[] splitData = splitLine[j].split("=");
+                            String val = splitData[1];
+                            if (j==6){
+                                roomType = val;
+                            } else if (j==7){
+                                try {
+                                    int check = Integer.parseInt(val);
+                                } catch (Exception e) {
+                                    flag = false;
+                                }
+                                poolSquare = val;
+                            } else if (j==8){
+                                try {
+                                    int check = Integer.parseInt(val);
+                                } catch (Exception e) {
+                                    flag = false;
+                                }
+                                floor = val;
+                            }
+                        }
+                    } else if (ID.contains("HO")){
+                        for (int j =6; j<8; j++){
+                            String[] splitData = splitLine[j].split("=");
+                            String val = splitData[1];
+                            if (j==6){
+                                houseType = val;
+                            } else if (j==7){
+                                try {
+                                    int check = Integer.parseInt(val);
+                                } catch (Exception e) {
+                                    flag = false;
+                                }
+                                floor = val;
+                            }
+                        }
+                    } else if(ID.contains("RO")){
+                        String[] splitData = splitLine[6].split("=");
+                        service = splitData[1];
+                    }
+                } else if (i == 1) {
+                    name = value;
+                } else if (i == 2) {
+                    try {
+                        square = Integer.parseInt(value);
+                    } catch (Exception e) {
+                        flag = false;
+                    }
+                } else if (i == 3) {
+                    try {
+                        price = Long.parseLong(value);
+                    } catch (Exception e) {
+                        flag = false;
+                    }
+                } else if (i == 4) {
+                    try {
+                        numOfPer = Integer.parseInt(value);
+                    } catch (Exception e) {
+                        flag = false;
+                    }
+                } else if (i == 5) {
+                    type = value;
+                    if(flag){
+                        Facility facility;
+                        if (ID.contains("VL")){
+                            facility = new Villa(ID, name, square, price, numOfPer, type, roomType, poolSquare, floor);
+                        } else if (ID.contains("HO")){
+                            facility = new House(ID, name, square, price, numOfPer, type, houseType, floor);
+                        } else {
+                            facility = new Room(ID, name, square, price, numOfPer, type, service);
+                        }
+                        listFacility.add(facility);
+                    }
+                }
+            }
+        }
+        bufferedReader.close();
+
+    }
+    
+    public static void writeFile(List<Facility> list) throws IOException{
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src\\Data\\DataFacility.txt"));
+        for (Facility facility : list) {
+            if (facility instanceof Villa){
+                Villa villa = (Villa) facility;
+                bw.write("ID="+villa.getId()+", Name="+villa.getName()+", Square="+villa.getSquare()+", Price"+villa.getPrice()+", numOfPer"+villa.getNumOfPer()+",type="+villa.getType()+", roomType="+villa.getRoomType()+", poolSquare="+villa.getPoolSquare()+", floor="+villa.getFloor());
+            } else if (facility instanceof House){
+                House house = (House) facility;
+                bw.write("ID="+house.getId()+", Name="+house.getName()+", Square="+house.getSquare()+", Price"+house.getPrice()+", numOfPer"+house.getNumOfPer()+",type="+house.getType()+", houseType="+house.getHouseType()+", floor="+house.getFloor());
+
+            } else {
+                Room room = (Room) (facility);
+                bw.write("ID="+room.getId()+", Name="+room.getName()+", Square="+room.getSquare()+", Price"+room.getPrice()+", numOfPer"+room.getNumOfPer()+", type="+room.getType()+", service="+room.getService());
+
+            }
+        }
+    }
+
 }
