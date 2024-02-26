@@ -1,12 +1,25 @@
-
 package repository;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import model.Facility;
+import model.House;
+import model.Room;
+import model.Villa;
 
+/**
+ *
+ * @author DELL
+ */
 public class FacilityRepository {
+
     private LinkedHashMap<Facility, Integer> facilityMap = new LinkedHashMap<>();
 
     public FacilityRepository() {
@@ -24,8 +37,10 @@ public class FacilityRepository {
         for (Facility facility : facilityList) {
             facilityMap.put(facility, 0);
         }
-    };
+    }
 
+    ;
+    
     public void printFacilityMap() {
         for (Map.Entry<Facility, Integer> entry : facilityMap.entrySet()) {
             Facility key = entry.getKey();
@@ -33,7 +48,7 @@ public class FacilityRepository {
             System.out.println("Ten dich vu " + key.getName() + " So lan dung: " + val);
         }
     }
-    
+
     public static void readFile(List<Facility> listFacility) throws FileNotFoundException, IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Data\\DataFacility.txt"));
         String line;
@@ -163,5 +178,4 @@ public class FacilityRepository {
             }
         }
     }
-
 }
