@@ -24,7 +24,7 @@ public class PromotionManagement extends Menu {
     }
 
     @Override
-    public void execute(int n) {
+    public void execute(int n) throws ParseException, IOException {
         switch (n){
             case 1 ->{ //"Display list customers use service"
                 pr.showCusService();
