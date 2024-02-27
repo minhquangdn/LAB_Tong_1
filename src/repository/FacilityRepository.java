@@ -175,6 +175,7 @@ public class FacilityRepository {
                 Room room = (Room) (facility);
                 bw.write("ID="+room.getId()+", Name="+room.getName()+", Square="+room.getSquare()+", Price"+room.getPrice()+", numOfPer"+room.getNumOfPer()+", type="+room.getType()+", service="+room.getService());
             }
+            bw.newLine();
         }
         bw.close();
     }
