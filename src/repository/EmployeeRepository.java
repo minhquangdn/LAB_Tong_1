@@ -4,8 +4,11 @@
  */
 package repository;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,56 +24,61 @@ import utils.Validation;
  * @author DELL
  */
 public class EmployeeRepository {
-    String filePath = "List Of Employees.txt";
+    String filePath = "data\\DataEmployee.txt";
 
 
-    public List<Employee> loadListEmpFromFile(){
+    public List<Employee> loadListEmpFromFile() throws  IOException{
         List<Employee> listOfEmployees = new ArrayList<>();
-        try {
-            Scanner sc = new Scanner(new File(filePath));
-            while (sc.hasNextLine()) {
-                String line = sc.nextLine();
-                String[] data = line.split("\\|");
-                if (data.length == 10) {
-                    String idString = data[0].split(":")[1].trim();
-                    boolean checkID = Validation.checkIDEmp(idString, listOfEmployees);
+        
+            // Scanner sc = new Scanner(new FileReader(filePath));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
 
-                    String perName = data[1].split(":")[1].trim();
+            String line;
+                
+                    while ((line = bufferedReader.readLine()) != null) {
+                        String[] data = line.split("\\|");
+                        if (data.length == 10) {
+                            String idString = data[0].split(":")[1].trim();
+                            boolean checkID = Validation.checkIDEmp(idString, listOfEmployees);
 
-                    String perBirth_String = data[2].split(":")[1].trim();
-                    boolean perBirth_bool = Validation.isValidDate(perBirth_String, "dd/MM/yyyy");
+                            String perName = data[1].split(":")[1].trim();
 
-                    String perSex = data[3].split(":")[1].trim();
+                            String perBirth_String = data[2].split(":")[1].trim();
+                            boolean perBirth_bool = Validation.isValidDate(perBirth_String, "dd/MM/yyyy");
 
-                    String perCMND_String = data[4].split(":")[1].trim();
-                    boolean perCMND_bool = Validation.isValidCMND(perCMND_String);
+                            String perSex = data[3].split(":")[1].trim();
 
-                    String perPhone_String = data[5].split(":")[1].trim();
-                    boolean perPhone_Bool = Validation.isValidPhone(perPhone_String);
+                            String perCMND_String = data[4].split(":")[1].trim();
+                            boolean perCMND_bool = Validation.isValidCMND(perCMND_String);
 
-                    String perEmail = data[6].split(":")[1].trim();
+                            String perPhone_String = data[5].split(":")[1].trim();
+                            boolean perPhone_Bool = Validation.isValidPhone(perPhone_String);
 
-                    String emplevel = data[7].split(":")[1].trim();
+                            String perEmail = data[6].split(":")[1].trim();
 
-                    String empPosition = data[8].split(":")[1].trim();
+                            String emplevel = data[7].split(":")[1].trim();
 
-                    String  empSalary_String = data[9].split(":")[1].trim();
+                            String empPosition = data[8].split(":")[1].trim();
 
-                    if (checkID && perBirth_bool && perCMND_bool && perPhone_Bool) {
-                        String perId = idString;
-                        String perCMND = perCMND_String;
-                        String perPhone = perPhone_String;
-                        int empSalary = Integer.parseInt(empSalary_String);
-                        Date perBirth = Validation.parse(perBirth_String);
-                        Employee employee  = new Employee(perId, perName, perBirth, perSex, perCMND, perPhone, perEmail, emplevel, empPosition, empSalary);
+                            String  empSalary_String = data[9].split(":")[1].trim();
 
-                        listOfEmployees.add(employee);
+                            if (checkID && perBirth_bool && perCMND_bool && perPhone_Bool) {
+                                String perId = idString;
+                                String perCMND = perCMND_String;
+                                String perPhone = perPhone_String;
+                                int empSalary = Integer.parseInt(empSalary_String);
+                                Date perBirth = Validation.parse(perBirth_String);
+                                Employee employee  = new Employee(perId, perName, perBirth, perSex, perCMND, perPhone, perEmail, emplevel, empPosition, empSalary);
+
+                                listOfEmployees.add(employee);
+                            }
+                        }
                     }
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+                    bufferedReader.close();
+               
+           
+       
+        
         return listOfEmployees;
     }
 }

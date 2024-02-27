@@ -19,7 +19,7 @@ import utils.Validation;
  * @author DELL
  */
 public class CustomerRepository {
-    String filePath = "List Of Customer.txt";
+    String filePath = "data\\DataCustomer.txt";
 
     public List<Customer> loadListCusFromFile(){
         List<Customer> listOfCustomers = new ArrayList<>();
