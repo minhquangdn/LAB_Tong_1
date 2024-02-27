@@ -125,14 +125,16 @@ public class FacilityService{
 
 
     public void addNewFacility() throws Exception {
-        int choice = 1;
+        int choice = 0;
         do {
             System.out.println("1. Add new villa"
                                 +"\n2. Add new house"
                                 +"\n3. Add new room"
-                                +"\n4. Back to menu");
+                                +"\n4. Back to menu");    
+         
             choice = Validation.getIntFromInput("your choice");
-            String svID = null;
+            String svID = null;        
+
             if(choice == 1){
                 int dem = 0;
                 for (Facility facility : listFacility) {

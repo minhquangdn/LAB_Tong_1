@@ -23,7 +23,6 @@ public class Validation {
             try {
                 number = sc.nextDouble();
                 if (number > 0) {
-                    System.out.println("Enter successfully!");
                     return number;
                 } else {
                     System.err.println("Please enter the double number > 0 ");
@@ -43,7 +42,6 @@ public class Validation {
             try {
                 number = sc.nextInt();
                 if (number > 0) {
-                    System.out.println("Enter successfully!");
                     return number;
                 } else {
                     System.err.println("Please enter the integer number > 0 ");
@@ -101,7 +99,6 @@ public class Validation {
 
             if (input.matches("NV-\\d{4}")) {
                 isValid = true;
-                System.out.println("Enter successfully!");
             } else {
                 System.out.println("Enter unsuccessfully, please try again..");
             }
@@ -121,7 +118,6 @@ public class Validation {
 
             if (input.matches("KH-\\d{4}")) {
                 isValid = true;
-                System.out.println("Enter successfully!");
             } else {
                 System.out.println("Enter unsuccessfully, please try again..");
             }
@@ -141,7 +137,6 @@ public class Validation {
 
             if (isValidFullName(fullName)) {
                 isValid = true;
-                System.out.println("Enter successfully!");
             } else {
                 System.out.println("Please capitalize the first letter in each word..");
             }
@@ -177,7 +172,6 @@ public class Validation {
 
             if (input.matches("\\d{9}")||input.matches("\\d{12}")) {
                 isValid = true;
-                System.out.println("Enter successfully!");
             } else {
                 System.out.println("Please enter a string of 9 numbers or 12 numbers..");
             }
@@ -196,7 +190,6 @@ public class Validation {
 
             if (input.matches("0\\d{9}")) {
                 isValid = true;
-                System.out.println("Enter successfully!");
             } else {
                 System.out.println("Please enter the correct phone number format 0xxxxxxxxx..");
             }
@@ -212,7 +205,6 @@ public class Validation {
             try {
                 number = sc.nextInt();
                 if (number > 0 && number < 20) {
-                    System.out.println("Enter successfully!");
                     return number;
                 } else {
                     System.err.println("Please enter the integer number > 0 and < 20 ");
@@ -235,7 +227,6 @@ public class Validation {
 
             if (input.equalsIgnoreCase("villa")||input.equalsIgnoreCase("house")||input.equalsIgnoreCase("room")) {
                 isValid = true;
-                System.out.println("Enter successfully!");
             } else {
                 System.out.println("Enter unsuccessfully, please try again..");
             }
@@ -252,7 +243,6 @@ public class Validation {
             try {
                 number = sc.nextInt();
                 if (number > 30) {
-                    System.out.println("Enter successfully!");
                     return number;
                 } else {
                     System.err.println("Please enter the integer number > 30 ");
@@ -287,7 +277,6 @@ public class Validation {
                 // Check age >= 18
                 if (age >= 18) {
                     validAge = true;
-                    System.out.println("Enter successfully!");
                 } else {
                     System.out.println("Only enter the birthday that enough 18 age, please re-enter..");
                 }
@@ -317,7 +306,6 @@ public class Validation {
         if (currentDayMonth < birthDayMonth) {
             age--;
         }
-        
         return age;
     }  
 
