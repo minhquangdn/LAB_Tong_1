@@ -32,7 +32,9 @@ public class FacilityService {
         this.listFacility = listFacility;
     }
 
-    public Facility searchFacility(String id) {
+    public Facility searchFacility(String id) throws IOException {
+        listFacility.clear();
+        listFacility = FacilityRepository.readFile();
         for (Facility f : listFacility) {
             if (f.getId().equals(id)) {
                 return f;
@@ -42,10 +44,8 @@ public class FacilityService {
     }
 
     public void displayFacility() throws IOException {
-        if (listFacility.isEmpty()) {
-            FacilityRepository.readFile(listFacility);
-
-        }
+        listFacility.clear();
+        listFacility = FacilityRepository.readFile();
         System.out.println(
                 "+----------------------------------------------------------------------------------------------------------------------------------------------+");
         System.out.println(
@@ -130,10 +130,8 @@ public class FacilityService {
 
 
     public void addNewFacility() throws Exception {
-        if (listFacility.isEmpty()) {
-            FacilityRepository.readFile(listFacility);
-
-        }
+        listFacility.clear();
+        listFacility = FacilityRepository.readFile();
         int choice = 0;
         do {
             System.out.println("1. Add new villa"
@@ -184,9 +182,9 @@ public class FacilityService {
         System.out.println("Add successfully!");
     }
 
-    public void displayFacilityMaintainence() {
+    public void displayFacilityMaintainence() throws IOException {
         FacilityRepository facilityRepository = new FacilityRepository();
-        facilityRepository.addDataFromList(listFacility);
+        facilityRepository.addDataFromList(FacilityRepository.readFile());
         facilityRepository.printFacilityMap();
     }
 
