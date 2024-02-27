@@ -31,7 +31,7 @@ public class PromotionManagement extends Menu {
             }
             
             case 2 ->{ //"Display list customers get voucher"
-                pm.giveVoucher();
+                pr.giveVoucher();
             }
             
             case 3 ->{ // "Return main menu"
