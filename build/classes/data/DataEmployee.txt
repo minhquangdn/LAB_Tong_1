@@ -1,0 +1,10 @@
+ID: NV-0002 | Name: Nguyen Thi Mai | Birth: 03/05/1998 | Sex: Nữ | CMND: 987654321001 | Phone: 0888777666 | Email: mainguyen@gmail.com | Level: Bachelor | Position: HCM City | Salary: 8000
+ID: NV-0003 | Name: Le Van An | Birth: 20/03/1985 | Sex: Nam | CMND: 112233445566 | Phone: 0977123456 | Email: anlevan@gmail.com | Level: PhD | Position: Da Nang | Salary: 12000
+ID: NV-0004 | Name: Tran Thanh Huyen | Birth: 05/12/1997 | Sex: Nữ | CMND: 998877665544 | Phone: 0933123456 | Email: huyentran@gmail.com | Level: Master | Position: Ho Chi Minh City | Salary: 9000
+ID: NV-0005 | Name: Pham Minh Duc | Birth: 10/02/2000 | Sex: Nam | CMND: 654321987000 | Phone: 0944789652 | Email: ducpham@gmail.com | Level: Bachelor | Position: Hue | Salary: 7500
+ID: NV-0006 | Name: Nguyen Thi Hoai | Birth: 08/06/1993 | Sex: Nữ | CMND: 789012345678 | Phone: 0965123456 | Email: hoainguyen@gmail.com | Level: PhD | Position: Quang Ninh | Salary: 11000
+ID: NV-0007 | Name: Hoang Van Tuan | Birth: 25/11/1988 | Sex: Nam | CMND: 112233445577 | Phone: 0988123456 | Email: tuanhoang@gmail.com | Level: Master | Position: Can Tho | Salary: 9500
+ID: NV-0008 | Name: Le Ngoc Trinh | Birth: 30/04/1995 | Sex: Nữ | CMND: 554433221100 | Phone: 0955123456 | Email: trinhle@gmail.com | Level: Bachelor | Position: Phu Yen | Salary: 7800
+ID: NV-0009 | Name: Nguyen Duc Thinh | Birth: 18/09/1980 | Sex: Nam | CMND: 332211445566 | Phone: 0923123456 | Email: thinhnguyen@gmail.com | Level: PhD | Position: Vinh | Salary: 11500
+ID: NV-0010 | Name: Doan Thi Minh | Birth: 02/03/1996 | Sex: Nữ | CMND: 456789123000 | Phone: 0912123456 | Email: minhdoan@gmail.com | Level: Master | Position: Quy Nhon | Salary: 9800
+ID: NV-0011 | Name: Tran Van Quoc | Birth: 07/08/1983 | Sex: Nam | CMND: 789654321987 | Phone: 0945123456 | Email: quoctran@gmail.com | Level: Bachelor | Position: Vung Tau | Salary: 8000

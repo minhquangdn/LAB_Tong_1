@@ -1,0 +1,10 @@
+ID: KH-0004 | Name: Le Thi Lan | Birth: 15/07/1990 | Sex: Nữ | CMND: 987654321012 | Phone: 0888999000 | Email: lanle@gmail.com | Level: Bachelor | Address: Hanoi
+ID: KH-0005 | Name: Nguyen Van An | Birth: 20/03/1985 | Sex: Nam | CMND: 112233445566 | Phone: 0977123456 | Email: annguyen@gmail.com | Level: PhD | Address: Da Nang
+ID: KH-0006 | Name: Tran Thanh Huyen | Birth: 05/12/1997 | Sex: Nữ | CMND: 998877665544 | Phone: 0933123456 | Email: huyentran@gmail.com | Level: Master | Address: Ho Chi Minh City
+ID: KH-0007 | Name: Pham Minh Duc | Birth: 10/02/2000 | Sex: Nam | CMND: 654321987000 | Phone: 0944789652 | Email: ducpham@gmail.com | Level: Bachelor | Address: Hue
+ID: KH-0008 | Name: Nguyen Thi Hoai | Birth: 08/06/1993 | Sex: Nữ | CMND: 789012345678 | Phone: 0965123456 | Email: hoainguyen@gmail.com | Level: PhD | Address: Quang Ninh
+ID: KH-0009 | Name: Hoang Van Tuan | Birth: 25/11/1988 | Sex: Nam | CMND: 112233445577 | Phone: 0988123456 | Email: tuanhoang@gmail.com | Level: Master | Address: Can Tho
+ID: KH-0010 | Name: Le Ngoc Trinh | Birth: 30/04/1995 | Sex: Nữ | CMND: 554433221100 | Phone: 0955123456 | Email: trinhle@gmail.com | Level: Bachelor | Address: Phu Yen
+ID: KH-0011 | Name: Nguyen Duc Thinh | Birth: 18/09/1980 | Sex: Nam | CMND: 332211445566 | Phone: 0923123456 | Email: thinhnguyen@gmail.com | Level: PhD | Address: Vinh
+ID: KH-0012 | Name: Doan Thi Minh | Birth: 02/03/1996 | Sex: Nữ | CMND: 456789123000 | Phone: 0912123456 | Email: minhdoan@gmail.com | Level: Master | Address: Quy Nhon
+ID: KH-0013 | Name: Tran Van Quoc | Birth: 07/08/1983 | Sex: Nam | CMND: 789654321987 | Phone: 0945123456 | Email: quoctran@gmail.com | Level: Bachelor | Address: Vung Tau

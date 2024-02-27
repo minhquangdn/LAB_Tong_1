@@ -1,2 +1,0 @@
-ID:  NV-0001| Name: Tran Nguyen Hoang Phuc| Birth: 12/09/2004|Sex: Nam| CMND: 123456789009| Phone: 0999898767| Email: tphuctran@gmail.com| Level: Master| Position: NN| Salary: 10000
-ID:  NV-0003| Name: Tran Nguyen Hoang amiaaaaaa| Birth: 12/09/2004|Sex: Nam| CMND: 123456789009| Phone: 0999898767| Email: tphuctran@gmail.com| Level: Master| Position: NN| Salary: 10000
