@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,15 +43,30 @@ public class FacilityRepository {
     ;
     
     public void printFacilityMap() {
+        
+        System.out.println(
+                "\n\n+----------------------------------------------------+");
+        System.out.println(
+                "|           List of Facility Maintainence            |");
+        System.out.println(
+                "|----------------------------------------------------|");
+        System.out.println(String.format("| %-12s | %-12s | %-20s |", "Service code","Service name", "Number of booking"));
+        System.out.println(
+                "|--------------|--------------|----------------------|");
         for (Map.Entry<Facility, Integer> entry : facilityMap.entrySet()) {
             Facility key = entry.getKey();
             int val = entry.getValue();
-            System.out.println("Ten dich vu " + key.getName() + " So lan dung: " + val);
+            if(val>=5){
+                System.out.println(String.format("| %-12s | %-12s | %-20s |",key.getId(), key.getName(), val));
+            };
         }
+        System.out.println(
+                "+----------------------------------------------------+");
     }
 
-    public static void readFile(List<Facility> listFacility) throws FileNotFoundException, IOException {
+    public static List<Facility> readFile() throws FileNotFoundException, IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\Data\\DataFacility.txt"));
+        List<Facility> listFacility = new ArrayList<>();
         String line;
 
         while ((line = bufferedReader.readLine()) != null) {
@@ -158,7 +174,7 @@ public class FacilityRepository {
             }
         }
         bufferedReader.close();
-
+        return listFacility;
     }
     
     public static void writeFile(List<Facility> list) throws IOException{
@@ -166,14 +182,14 @@ public class FacilityRepository {
         for (Facility facility : list) {
             if (facility instanceof Villa){
                 Villa villa = (Villa) facility;
-                bw.write("ID="+villa.getId()+", Name="+villa.getName()+", Square="+villa.getSquare()+", Price"+villa.getPrice()+", numOfPer"+villa.getNumOfPer()+",type="+villa.getType()+", roomType="+villa.getRoomType()+", poolSquare="+villa.getPoolSquare()+", floor="+villa.getFloor());
+                bw.write("ID="+villa.getId()+", Name="+villa.getName()+", Square="+villa.getSquare()+", Price="+villa.getPrice()+", numOfPer="+villa.getNumOfPer()+",type="+villa.getType()+", roomType="+villa.getRoomType()+", poolSquare="+villa.getPoolSquare()+", floor="+villa.getFloor());
             } else if (facility instanceof House){
                 House house = (House) facility;
-                bw.write("ID="+house.getId()+", Name="+house.getName()+", Square="+house.getSquare()+", Price"+house.getPrice()+", numOfPer"+house.getNumOfPer()+",type="+house.getType()+", houseType="+house.getHouseType()+", floor="+house.getFloor());
+                bw.write("ID="+house.getId()+", Name="+house.getName()+", Square="+house.getSquare()+", Price="+house.getPrice()+", numOfPer="+house.getNumOfPer()+",type="+house.getType()+", houseType="+house.getHouseType()+", floor="+house.getFloor());
 
             } else {
                 Room room = (Room) (facility);
-                bw.write("ID="+room.getId()+", Name="+room.getName()+", Square="+room.getSquare()+", Price"+room.getPrice()+", numOfPer"+room.getNumOfPer()+", type="+room.getType()+", service="+room.getService());
+                bw.write("ID="+room.getId()+", Name="+room.getName()+", Square="+room.getSquare()+", Price="+room.getPrice()+", numOfPer="+room.getNumOfPer()+", type="+room.getType()+", service="+room.getService());
             }
             bw.newLine();
         }
