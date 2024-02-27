@@ -2,6 +2,7 @@ package controller;
 
 import service.BookingService;
 import service.FacilityService;
+import repository.PromotionRepository;
 import view.Menu;
 
 
