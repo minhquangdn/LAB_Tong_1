@@ -16,11 +16,12 @@ import utils.Validation;
  *
  * @author Quang
  */
-public class FacilityService{
+public class FacilityService {
+
     List<Facility> listFacility = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
-    public FacilityService(){
+    public FacilityService() {
     }
 
     public List<Facility> getListFacility() {
@@ -33,14 +34,18 @@ public class FacilityService{
 
     public Facility searchFacility(String id) {
         for (Facility f : listFacility) {
-            if (f.getId().equals(id))
+            if (f.getId().equals(id)) {
                 return f;
+            }
         }
         return null;
     }
 
     public void displayFacility() throws IOException {
-        FacilityRepository.readFile(listFacility);
+        if (listFacility.isEmpty()) {
+            FacilityRepository.readFile(listFacility);
+
+        }
         System.out.println(
                 "+----------------------------------------------------------------------------------------------------------------------------------------------+");
         System.out.println(
@@ -52,7 +57,7 @@ public class FacilityService{
                 "Pool Square", "Floor"));
         System.out.println(
                 "|--------------|--------------|--------------|--------------|----------------------|--------------|--------------|--------------|--------------|");
-        
+
         for (Facility facility : listFacility) {
             if (facility.getId().contains("VL")) {
                 Facility nf = (Villa) facility;
@@ -72,7 +77,6 @@ public class FacilityService{
                 "Service name", "Square", "Price", "Number of person", "Type", "Service"));
         System.out.println(
                 "|--------------|--------------|--------------|--------------|----------------------|--------------|--------------|");
-        
 
         for (Facility facility : listFacility) {
             if (facility.getId().contains("HO")) {
@@ -93,7 +97,6 @@ public class FacilityService{
                 "Service name", "Square", "Price", "Number of person", "Type", "Service"));
         System.out.println(
                 "|--------------|--------------|--------------|--------------|----------------------|--------------|--------------|");
-    
 
         for (Facility facility : listFacility) {
             if (facility.getId().contains("RO")) {
@@ -104,7 +107,9 @@ public class FacilityService{
         System.out.println(
                 "|----------------------------------------------------------------------------------------------------------------|");
 
-    };
+    }
+
+    ;
 
     // void addCung() {
     //     if (listFacility.isEmpty()) {
@@ -125,17 +130,21 @@ public class FacilityService{
 
 
     public void addNewFacility() throws Exception {
+        if (listFacility.isEmpty()) {
+            FacilityRepository.readFile(listFacility);
+
+        }
         int choice = 0;
         do {
             System.out.println("1. Add new villa"
-                                +"\n2. Add new house"
-                                +"\n3. Add new room"
-                                +"\n4. Back to menu");    
-         
-            choice = Validation.getIntFromInput("your choice");
-            String svID = null;        
+                    + "\n2. Add new house"
+                    + "\n3. Add new room"
+                    + "\n4. Back to menu");
 
-            if(choice == 1){
+            choice = Validation.getIntFromInput("your choice");
+            String svID = null;
+
+            if (choice == 1) {
                 int dem = 0;
                 for (Facility facility : listFacility) {
                     if (facility.getId().contains("VL")) {
@@ -143,7 +152,7 @@ public class FacilityService{
                     }
                 }
                 svID = "SVVL-" + String.format("%04d", ++dem);
-            } else if (choice == 2){
+            } else if (choice == 2) {
                 int dem = 0;
                 for (Facility facility : listFacility) {
                     if (facility.getId().contains("HO")) {
@@ -151,7 +160,7 @@ public class FacilityService{
                     }
                 }
                 svID = "SVHO-" + String.format("%04d", ++dem);
-            } else if (choice == 3){
+            } else if (choice == 3) {
                 int dem = 0;
                 for (Facility facility : listFacility) {
                     if (facility.getId().contains("RO")) {
@@ -159,11 +168,19 @@ public class FacilityService{
                     }
                 }
                 svID = "SVRO-" + String.format("%04d", ++dem);
-            } else if (choice == 4) break;
+            } else if (choice >= 4) {
+                break;
+            }
             Facility nFacility = addFacility(svID);
             listFacility.add(nFacility);
         } while (choice <= 4);
-        FacilityRepository.writeFile(listFacility);
+        System.out.println("Do you want to save all data entered to the file? ");
+        if (Validation.getChoiceYesNoNFromInput("Y/N").equalsIgnoreCase("y")) {
+            for (Facility facility : listFacility) {
+                FacilityRepository.writeFile(listFacility);
+
+            }
+        }
         System.out.println("Add successfully!");
     }
 
