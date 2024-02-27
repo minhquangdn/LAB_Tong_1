@@ -24,7 +24,7 @@ import utils.Validation;
  * @author DELL
  */
 public class EmployeeRepository {
-    String filePath = "data\\DataEmployee.txt";
+    String filePath = "src\\data\\DataEmployee.txt";
 
 
     public List<Employee> loadListEmpFromFile() throws  IOException{
